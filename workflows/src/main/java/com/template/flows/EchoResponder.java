@@ -18,20 +18,14 @@ public class EchoResponder extends FlowLogic<Void> {
     }
 
     private String reverseString(String input) {
-        // getBytes() method to convert string
-        // into bytes[].
-        byte [] strAsByteArray = input.getBytes();
+        StringBuilder sb = new StringBuilder();
 
-        byte [] result =
-                new byte [strAsByteArray.length];
+        for(int i = input.length() - 1; i >= 0; i--)
+        {
+            sb.append(input.charAt(i));
+        }
 
-        // Store result in reverse order into the
-        // result byte[]
-        for (int i = 0; i<strAsByteArray.length; i++)
-            result[i] =
-                    strAsByteArray[strAsByteArray.length-i-1];
-
-        return result.toString();
+        return sb.toString();
     }
     @Suspendable
     @Override
