@@ -37,9 +37,9 @@ public class EchoInitiator extends FlowLogic<Void> {
         IdentityService identityService = serviceHub.getIdentityService();
         Set<Party> parties = identityService.partiesFromName(this.counterparty, false);
         Party cp = parties.iterator().next();
-        System.out.println("Initiating flow");
         FlowSession session = initiateFlow(cp);
-        System.out.println("Sending message");
+        System.out.print("Sending message: ");
+        System.out.println(this.message);
         session.send(this.message);
 
         String response = session.receive(String.class).unwrap(s -> s);

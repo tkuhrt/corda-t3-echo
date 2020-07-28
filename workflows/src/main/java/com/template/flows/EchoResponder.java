@@ -19,14 +19,10 @@ public class EchoResponder extends FlowLogic<Void> {
 
     private String reverseString(String input) {
         StringBuilder sb = new StringBuilder();
-
-        for(int i = input.length() - 1; i >= 0; i--)
-        {
-            sb.append(input.charAt(i));
-        }
-
-        return sb.toString();
+        sb.append(input);
+        return sb.reverse().toString();
     }
+    
     @Suspendable
     @Override
     public Void call() throws FlowException {
