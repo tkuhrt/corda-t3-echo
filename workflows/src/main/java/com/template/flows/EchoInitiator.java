@@ -41,6 +41,11 @@ public class EchoInitiator extends FlowLogic<Void> {
         FlowSession session = initiateFlow(cp);
         System.out.println("Sending message");
         session.send(this.message);
+
+        String response = session.receive(String.class).unwrap(s -> s);
+        System.out.print("Received response: ");
+        System.out.println(response);
+
         return null;
     }
 }
